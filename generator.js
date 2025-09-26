@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 function generateCode(length = 12) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let code = "";
@@ -15,5 +17,7 @@ function generateMultipleCodes(count = 10, length = 12) {
   return codes;
 }
 
-// Exemplu: generează 10 coduri de 12 caractere
-console.log(generateMultipleCodes(10, 12));
+// Generează 10 coduri de 12 caractere și le salvează în coduri.txt
+const codes = generateMultipleCodes(10, 12);
+fs.writeFileSync("coduri.txt", codes.join("\n"), "utf8");
+console.log(codes);
